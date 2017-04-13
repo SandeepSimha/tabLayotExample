@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyTabsTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Avenir">
+        <!-- Style base Font family Avenir -->
+    </style>
+
+    <style name="Avenir.Roman">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textStyle">normal</item>
+        <!-- Avenir Roman/Book -->
+    </style>
+
 </resources>
