@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -42,14 +44,18 @@ public class MainActivity extends AppCompatActivity {
 
         final ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
         final int tabsCount = vg.getChildCount();
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                Log.e("Tab count", "Unselected = " + tab.getPosition());
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.e("Tab count", "Unselected = " + tab.getPosition());
+
+                ViewGroup vgTab = (ViewGroup) vg.getChildAt(tab.getPosition());
+                TextView view = (TextView) vgTab.findViewById(R.id.txt_title);
+                Typeface type = Typeface.createFromAsset(getApplicationContext().getAssets(), "AvenirLTStd-Heavy.otf");
+                view.setTypeface(type);
+
 //
-//                ViewGroup vgTab = (ViewGroup) vg.getChildAt(tab.getPosition());
 //                int tabChildsCount = vgTab.getChildCount();
-//
 //                for (int i = 0; i < tabChildsCount; i++) {
 //                    View tabViewChild = vgTab.getChildAt(i);
 //                    if (tabViewChild instanceof AppCompatTextView) {
@@ -60,12 +66,17 @@ public class MainActivity extends AppCompatActivity {
 //                        viewChild.setAllCaps(false);
 //                    }
 //                }
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//                Log.e("Tab count", "selected = " + tab.getPosition());
-//
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                Log.e("Tab count", "selected = " + tab.getPosition());
+
+                ViewGroup vgTab = (ViewGroup) vg.getChildAt(tab.getPosition());
+                TextView view = (TextView) vgTab.findViewById(R.id.txt_title);
+                Typeface type = Typeface.createFromAsset(getApplicationContext().getAssets(), "AvenirLTStd-Roman.otf");
+                view.setTypeface(type);
+
 //                ViewGroup vgTab = (ViewGroup) vg.getChildAt(tab.getPosition());
 //                int tabChildsCount = vgTab.getChildCount();
 //
@@ -79,13 +90,13 @@ public class MainActivity extends AppCompatActivity {
 //                        viewChild.setAllCaps(false);
 //                    }
 //                }
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//                //onTabSelected(tab);
-//            }
-//        });
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                //onTabSelected(tab);
+            }
+        });
 
         Log.e("Tab count", "Tabcount = " + tabsCount);
 
